@@ -1,0 +1,86 @@
+// Declare both totalTasks and currentHour with the provided values
+// In order to introduce yourself to the team you should declare
+// a variable and assign your name to it. After that, show us a
+// greeting message with your name included.
+
+let totalTasks = 4;
+let currentHour = 9;
+const greetingMessage = 'Hey, bunch of emacs losers! My name is ';
+const name = 'Lucas Saldanha';
+
+console.log('Me: ' + greetingMessage + name);
+
+const totalTries = 4;
+let timesAsked = 0;
+const failedAttemptMessage = 'Yes. I eat the fish.';
+let sinkIsClean = false;
+
+const question = "Me: You can't leave the fish's guts all over the kitchen sink like that. You gotta put it into the trash and take the trash out. Do you understand?";
+
+// function to explain to Jian Yang what he have to do about the fish's guts
+function explainToJianYang() {
+    for (timesAsked; timesAsked < totalTries; timesAsked++) {
+        console.log(question);
+        
+        if(timesAsked + 1 === totalTries) {
+            console.log('Jian Yang: Ok, I will clean it');
+            sinkIsClean = true;
+        } else {
+            console.log('Jian Yang:' + failedAttemptMessage)
+        }
+    }
+    if(sinkIsClean) {
+        currentHour += 2;
+    } else {
+        currentHour += 3;
+    }
+
+    timesAsked -= 1;
+}
+
+function solveInstructions() {
+    const taskInstructions = ['Fix a bug and something something remote', 'Must push the new version to the cloud'];
+    const actualTask = 'Fix a bug and push the new version to the remote'; 
+    const sentenceToFill = taskInstructions[1].replace('Must ', '').replace(' cloud', '');
+    const extractedCharacters = taskInstructions[0].replace('something something', sentenceToFill);
+    
+    if(extractedCharacters === actualTask) {
+        console.log("Me: The task is "+ extractedCharacters +"?")
+        console.log("Jared: Yes, that's exactly it!");
+        currentHour += 2;
+    } else {
+        console.log("Jared: Hmm... Maybe we should just wait for Richard.");
+        currentHour += 3;
+    }
+    timesAsked -= 1;
+}
+
+let blueRollCount = 0;
+
+function alwaysBlueGame() {
+    const colors = ['Yellow', 'Blue'];
+
+    while (blueRollCount < 3) {
+        const random = Math.floor(Math.random() * 2);
+        const color = colors[random];
+
+        if(color === 'Blue') {
+            blueRollCount += 1;
+            console.log('Ball: ' + color);
+            console.log('Blues: ' + blueRollCount);
+        } else if(color === 'Yellow') {
+            blueRollCount = 0;
+            console.log('Ball: ' + color);
+            console.log('Blues: ' + 0);
+        }
+    }
+    console.log('ALWAYS BLUE, ALWAYS BLUE!!!');
+
+}
+
+console.log('Task #1')
+explainToJianYang();
+console.log('Task #2')
+solveInstructions();
+console.log('Task #3')
+alwaysBlueGame()
